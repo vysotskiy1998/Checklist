@@ -20,6 +20,7 @@ class ChecklistViewController: UITableViewController {
     var row2checked = false
     var row3checked = false
     var row4checked = false
+    var row5checked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

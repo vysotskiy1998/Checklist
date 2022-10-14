@@ -31,7 +31,7 @@ class ChecklistViewController: UITableViewController {
         
         let item5 = ChecklistItem(text: "Eat ice cream", checked: false)
         items.append(item5)
-    }
+    } 
     
     // MARK: Table View Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

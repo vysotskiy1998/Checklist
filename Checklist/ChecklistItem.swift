@@ -8,10 +8,6 @@
 import UIKit
 
 class ChecklistItem {
-    var text: String
-    var checked: Bool
-    init(text: String, checked: Bool) {
-        self.text = text
-        self.checked  = checked
-    }
+    var text = ""
+    var checked = true
 }

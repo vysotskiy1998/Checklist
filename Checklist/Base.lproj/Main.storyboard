@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lih-ga-MRN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lih-ga-MRN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,14 +18,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="n7K-Mu-Ewy">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n7K-Mu-Ewy" id="Ved-M4-bMz">
-                                    <rect key="frame" x="0.0" y="0.0" width="338.5" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyY-IW-S3R">
-                                            <rect key="frame" x="16" y="0.0" width="323" height="44.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="319.5" height="44.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="xAh-F2-nlh"/>
                                             </constraints>
@@ -50,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Checklists" id="jSh-Z3-cXs">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aqO-gS-khy">
                             <connections>
-                                <segue destination="tPw-G2-Ntz" kind="show" id="uqz-59-Idb"/>
+                                <segue destination="tPw-G2-Ntz" kind="show" identifier="AddItem" id="uqz-59-Idb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -111,7 +112,11 @@
                                 <action selector="cancel:" destination="tPw-G2-Ntz" id="8Um-Ib-KJa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="UQv-zW-xVC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="UQv-zW-xVC">
+                            <connections>
+                                <action selector="done:" destination="tPw-G2-Ntz" id="5KL-tA-SKn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="UQv-zW-xVC" id="wVQ-Ka-rkK"/>
@@ -120,7 +125,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEg-kT-3kz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621.60000000000002" y="35.532233883058474"/>
+            <point key="canvasLocation" x="710" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y8X-LM-h80">

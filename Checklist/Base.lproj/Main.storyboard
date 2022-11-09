@@ -51,6 +51,9 @@
                                         <constraint firstAttribute="bottom" secondItem="B6l-zP-zJu" secondAttribute="bottom" constant="11" id="sf6-AF-7gA"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="tPw-G2-Ntz" kind="show" identifier="EditItem" id="Cth-T1-inN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -156,6 +159,9 @@
             <point key="canvasLocation" x="-830" y="36"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cth-T1-inN"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="n7K-Mu-Ewy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="n7K-Mu-Ewy">
                                 <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n7K-Mu-Ewy" id="Ved-M4-bMz">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="316.5" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyY-IW-S3R">
-                                            <rect key="frame" x="16" y="0.0" width="319.5" height="44.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyY-IW-S3R">
+                                            <rect key="frame" x="24" y="0.0" width="293" height="44.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="xAh-F2-nlh"/>
                                             </constraints>
@@ -33,12 +33,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6l-zP-zJu">
+                                            <rect key="frame" x="4" y="8" width="15" height="25"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="nyY-IW-S3R" secondAttribute="trailing" constant="-0.5" id="5aG-DO-j0A"/>
                                         <constraint firstItem="nyY-IW-S3R" firstAttribute="top" secondItem="Ved-M4-bMz" secondAttribute="top" id="CV6-eG-aqn"/>
-                                        <constraint firstItem="nyY-IW-S3R" firstAttribute="leading" secondItem="Ved-M4-bMz" secondAttribute="leading" constant="16" id="G6u-0w-w1q"/>
+                                        <constraint firstItem="nyY-IW-S3R" firstAttribute="leading" secondItem="Ved-M4-bMz" secondAttribute="leading" constant="24" id="G6u-0w-w1q"/>
+                                        <constraint firstItem="B6l-zP-zJu" firstAttribute="leading" secondItem="Ved-M4-bMz" secondAttribute="leading" constant="4" id="jf6-JS-1u7"/>
+                                        <constraint firstItem="B6l-zP-zJu" firstAttribute="top" secondItem="Ved-M4-bMz" secondAttribute="top" constant="8" id="jgi-rk-RE7"/>
                                         <constraint firstAttribute="bottom" secondItem="nyY-IW-S3R" secondAttribute="bottom" constant="-0.5" id="k9K-c2-cgJ"/>
+                                        <constraint firstItem="nyY-IW-S3R" firstAttribute="leading" secondItem="B6l-zP-zJu" secondAttribute="trailing" constant="5" id="kmJ-IJ-B28"/>
+                                        <constraint firstAttribute="bottom" secondItem="B6l-zP-zJu" secondAttribute="bottom" constant="11" id="sf6-AF-7gA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -58,7 +68,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2T-ES-fmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-89" y="36"/>
+            <point key="canvasLocation" x="-90.400000000000006" y="35.532233883058474"/>
         </scene>
         <!--AddItem-->
         <scene sceneID="ZIM-m1-PkJ">

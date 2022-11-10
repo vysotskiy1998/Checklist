@@ -22,7 +22,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     
-    
     weak var delegate: AddItemViewControllerDelegate?
     
     

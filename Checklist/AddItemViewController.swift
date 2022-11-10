@@ -25,6 +25,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     weak var delegate: AddItemViewControllerDelegate?
     
 
+    
     var itemToEdit: ChecklistItem?
     
     override func viewDidLoad() {

@@ -17,14 +17,14 @@ protocol AddItemViewControllerDelegate: AnyObject {
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
-    
+
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     
     weak var delegate: AddItemViewControllerDelegate?
     
-    
+
     var itemToEdit: ChecklistItem?
     
     override func viewDidLoad() {

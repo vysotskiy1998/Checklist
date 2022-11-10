@@ -34,13 +34,17 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         if let item = itemToEdit {
             title = "Edit Item"
             textField.text = item.text
+            doneBarButton.isEnabled = true
         }
+        
+        doneBarButton.isEnabled = false
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
+        
     }
     
     //MARK: Убирает выделение ячейки
@@ -69,6 +73,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         
         return true
     }
+    
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         doneBarButton.isEnabled = false

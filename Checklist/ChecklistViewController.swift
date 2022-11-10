@@ -25,6 +25,16 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
     }
     
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem){
+        if let index = items.firstIndex(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     
     
@@ -86,6 +96,13 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
     }
     
+    func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
+        
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
+        
+    }
+    
     
     
     
@@ -100,9 +117,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         let item = items[indexPath.row]
         
-        let label = cell.viewWithTag(1000) as! UILabel
-        
-        label.text = item.text
+        configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
         
         return cell

@@ -52,7 +52,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="tPw-G2-Ntz" kind="show" identifier="EditItem" id="Cth-T1-inN"/>
+                                    <segue destination="tPw-G2-Ntz" kind="show" identifier="EditItem" trigger="accessoryAction" id="k8R-9z-cTX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -160,7 +160,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cth-T1-inN"/>
+        <segue reference="k8R-9z-cTX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

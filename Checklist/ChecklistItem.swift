@@ -5,9 +5,9 @@
 //  Created by Vladimir on 26.09.2022.
 //
  
-import UIKit
+import Foundation
 
-class ChecklistItem {
+class ChecklistItem: NSObject{
     var text = ""
     var checked = true
 }

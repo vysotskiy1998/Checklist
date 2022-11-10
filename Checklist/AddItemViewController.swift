@@ -11,6 +11,7 @@ import UIKit
 protocol AddItemViewControllerDelegate: AnyObject {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController)
     func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem)
 }
     
 
@@ -58,9 +59,14 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     
     @IBAction func done(_ sender: Any) {
-        let item = ChecklistItem()
-        item.text = textField.text!
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            delegate?.addItemViewController(self, didFinishEditing: item)
+        } else {
+            let item = ChecklistItem()
+            item.text = textField.text!
+            delegate?.addItemViewController(self, didFinishAdding: item)
+        }
     }
     
     //MARK: Метод что бы когда поле пустое кнопка Done становилась не активной

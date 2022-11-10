@@ -13,19 +13,19 @@ protocol AddItemViewControllerDelegate: AnyObject {
     func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
     func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem)
 }
-    
+
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var textField: UITextField!
-
+    
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     
     weak var delegate: AddItemViewControllerDelegate?
     
-
+    
     
     var itemToEdit: ChecklistItem?
     
@@ -37,7 +37,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
             textField.text = item.text
             doneBarButton.isEnabled = true
         }
-    
+        
         doneBarButton.isEnabled = false
         
     }
@@ -48,11 +48,13 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    
     //MARK: Убирает выделение ячейки
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
-
+    
+    
     @IBAction func cancel(_ sender: Any) {
         delegate?.addItemViewControllerDidCancel(self)
     }
@@ -86,4 +88,4 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
 }
- 
+

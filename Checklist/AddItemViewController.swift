@@ -7,13 +7,11 @@
 
 import UIKit
 
-
 protocol AddItemViewControllerDelegate: AnyObject {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController)
     func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
     func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem)
 }
-
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
@@ -22,7 +20,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     weak var delegate: AddItemViewControllerDelegate?
-    
     
     var itemToEdit: ChecklistItem?
     
@@ -42,9 +39,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
-        
     }
-    
     
     //MARK: Убирает выделение ячейки
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -54,7 +49,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func cancel(_ sender: Any) {
         delegate?.addItemViewControllerDidCancel(self)
     }
-    
     
     @IBAction func done(_ sender: Any) {
         if let item = itemToEdit {

@@ -10,10 +10,12 @@ import UIKit
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     
+    
     var items = [ChecklistItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -54,6 +56,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem){
         
         let label = cell.viewWithTag(1001) as! UILabel
@@ -64,6 +67,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             label.text = ""
         }
     }
+    
     
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1000) as! UILabel
@@ -78,6 +82,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     // MARK: Запрашивает у источника данных ячейку для вставки в определенное место Table View
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
+        
         
         let item = items[indexPath.row]
         
@@ -96,7 +101,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
-    
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue,sender: Any?) {

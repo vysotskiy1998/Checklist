@@ -92,9 +92,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pj8-RG-0wV">
-                                                    <rect key="frame" x="10" y="4" width="355" height="30"/>
+                                                    <rect key="frame" x="10" y="4" width="355" height="31"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="EPE-lp-lOy"/>
+                                                        <constraint firstAttribute="height" constant="31" id="EPE-lp-lOy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>

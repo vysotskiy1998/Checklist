@@ -19,12 +19,9 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     
-    
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
-    
     weak var delegate: AddItemViewControllerDelegate?
-    
     
     
     var itemToEdit: ChecklistItem?
@@ -54,7 +51,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         return nil
     }
     
-    
     @IBAction func cancel(_ sender: Any) {
         delegate?.addItemViewControllerDidCancel(self)
     }
@@ -81,7 +77,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         
         return true
     }
-    
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         doneBarButton.isEnabled = false

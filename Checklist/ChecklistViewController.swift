@@ -43,6 +43,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         item5.text = "Eat ice cream"
         item5.checked = false
         items.append(item5)
+        
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
     }
     
     // MARK: Table View Delegate
@@ -140,4 +143,15 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
         navigationController?.popViewController(animated: true)
     }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+      return
+    documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
 }

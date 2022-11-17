@@ -19,6 +19,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        loadChecklistItems()
+        
         let item1 = ChecklistItem()
         item1.text = "Walk the dog"
         item1.checked = true

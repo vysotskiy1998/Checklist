@@ -11,6 +11,7 @@ class AllListViewController: UITableViewController {
 
     let cellIdentifier = "ChecklistCell"
     
+    var lists = [Checklist]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

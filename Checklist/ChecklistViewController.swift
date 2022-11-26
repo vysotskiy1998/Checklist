@@ -16,9 +16,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = checklist.name
-        
         loadChecklistItems()
+        
+        title = checklist.name
     
         print("Documents folder is \(documentsDirectory())")
         print("Data file path is \(dataFilePath())")

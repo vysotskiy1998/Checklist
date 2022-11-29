@@ -212,8 +212,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Checklist" largeTitleDisplayMode="never" id="muM-L5-0vY">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dUh-Yx-qac"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="lCR-Nt-tNt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dUh-Yx-qac">
+                            <connections>
+                                <action selector="cancel:" destination="wDM-HV-yiS" id="CbT-YW-djs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="lCR-Nt-tNt">
+                            <connections>
+                                <action selector="done:" destination="wDM-HV-yiS" id="FZi-9a-hoG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="lCR-Nt-tNt" id="hX6-ZL-GEe"/>

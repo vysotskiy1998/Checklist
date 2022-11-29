@@ -23,4 +23,36 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     var checklistToEdit: Checklist?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let checklist = checklistToEdit {
+            textField.text = checklist.name
+            doneBarButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func cancel() {
+        delegate?.listDetailViewControllerDidCancel(self)
+    }
+    
+    @IBAction func done() {
+        if let checklist = checklistToEdit {
+            checklist.name = textField.text!
+            delegate?.listDetailViewController(self, didFinishEditing: checklist)
+        } else {
+            let checklist = Checklist(name: textField.text!)
+            delegate?.listDetailViewController(self, didFinishAdding: checklist)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
+    }
+    //MARK: Убирает выделение ячейки
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+    
 }

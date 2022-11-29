@@ -27,9 +27,15 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         if let checklist = checklistToEdit {
+            title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
     }
     
     @IBAction func cancel() {
@@ -46,10 +52,20 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textField.becomeFirstResponder()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let oldText = textField.text!
+        
+        let stringRange = Range(range, in: oldText)!
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        doneBarButton.isEnabled = !newText.isEmpty
+        return true
     }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        doneBarButton.isEnabled = false
+        return true
+    }
+    
     //MARK: Убирает выделение ячейки
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil

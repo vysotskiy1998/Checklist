@@ -31,6 +31,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             textField.text = checklist.name
             doneBarButton.isEnabled = true
         }
+        doneBarButton.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,11 +39,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
-    @IBAction func cancel() {
+    @IBAction func cancel(_ sender: Any) {
         delegate?.listDetailViewControllerDidCancel(self)
     }
     
-    @IBAction func done() {
+    @IBAction func done(_ sender: Any) {
         if let checklist = checklistToEdit {
             checklist.name = textField.text!
             delegate?.listDetailViewController(self, didFinishEditing: checklist)
@@ -52,12 +53,13 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text!
         
         let stringRange = Range(range, in: oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
-        doneBarButton.isEnabled = !newText.isEmpty
+        newText.isEmpty ? (doneBarButton.isEnabled = false) : (doneBarButton.isEnabled = true)
         return true
     }
     

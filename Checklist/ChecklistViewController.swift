@@ -19,7 +19,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         loadChecklistItems()
         
         title = checklist.name
-    
+        
         print("Documents folder is \(documentsDirectory())")
         print("Data file path is \(dataFilePath())")
     }
@@ -83,7 +83,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         saveChecklistItems()
     }
-
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
@@ -134,12 +134,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func dataFilePath() -> URL {
-      return
-    documentsDirectory().appendingPathComponent("Checklists.plist")
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
     }
     
-    func saveChecklistItems() { 
-       
+    func saveChecklistItems() {
+        
         let encoder = PropertyListEncoder()
         
         do {
@@ -154,20 +153,20 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func loadChecklistItems() {
-    
-      let path = dataFilePath()
-
-      if let data = try? Data(contentsOf: path) {
-    
-        let decoder = PropertyListDecoder()
-        do {
-    
-          items = try decoder.decode([ChecklistItem].self, from: data)
-        } catch {
-          print("Error decoding item array: \(error.localizedDescription)")
+        
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            
+            let decoder = PropertyListDecoder()
+            do {
+                
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
         }
-      }
     }
-   
+    
     
 }

@@ -30,9 +30,9 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+        } else {
+            doneBarButton.isEnabled = false
         }
-        
-        doneBarButton.isEnabled = false
         
     }
     

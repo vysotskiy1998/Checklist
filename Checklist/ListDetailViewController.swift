@@ -30,8 +30,9 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
+        } else {
+            doneBarButton.isEnabled = false
         }
-        doneBarButton.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

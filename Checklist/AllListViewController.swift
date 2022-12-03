@@ -16,6 +16,12 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for list in lists {
+          let item = ChecklistItem()
+          item.text = "Item for \(list.name)"
+          list.items.append(item)
+        }
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)

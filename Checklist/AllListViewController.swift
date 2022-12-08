@@ -16,12 +16,6 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for list in lists {
-          let item = ChecklistItem()
-          item.text = "Item for \(list.name)"
-          list.items.append(item)
-        }
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -38,6 +32,13 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         list = Checklist(name: "To Do")
         lists.append(list)
         
+        for list in lists {
+          let item = ChecklistItem()
+          item.text = "Item for \(list.name)"
+          list.items.append(item)
+        }
+        
+        loadChecklist()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
@@ -113,5 +114,41 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         controller.delegate = self
     }
     }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklist.plist")
+    }
+    
+    func saveChecklist() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(lists)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+                print("Error encoding lists array \(error.localizedDescription)")
+        }
+    }
+    
+    func loadChecklist() {
+        let path = dataFilePath()
+        let decoder = PropertyListDecoder()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                lists = try decoder.decode([Checklist].self, from: data)
+            } catch {
+                print("Error decoding list array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
     
 }

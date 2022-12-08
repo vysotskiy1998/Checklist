@@ -20,25 +20,26 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
-        var list = Checklist(name: "Birthday")
-        lists.append(list)
-        
-        list = Checklist(name: "Groceries")
-        lists.append(list)
-        
-        list = Checklist(name: "Cool Apps")
-        lists.append(list)
-        
-        list = Checklist(name: "To Do")
-        lists.append(list)
-        
-        for list in lists {
-          let item = ChecklistItem()
-          item.text = "Item for \(list.name)"
-          list.items.append(item)
-        }
-        
         loadChecklist()
+        
+//        var list = Checklist(name: "Birthday")
+//        lists.append(list)
+//
+//        list = Checklist(name: "Groceries")
+//        lists.append(list)
+//
+//        list = Checklist(name: "Cool Apps")
+//        lists.append(list)
+//
+//        list = Checklist(name: "To Do")
+//        lists.append(list)
+        
+//        for list in lists {
+//          let item = ChecklistItem()
+//          item.text = "Item for \(list.name)"
+//          list.items.append(item)
+//        }
+        print("Documents folder is \(documentsDirectory())")
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
@@ -61,6 +62,7 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
             }
         }
         navigationController?.popViewController(animated: true)
+        
     }
     
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
@@ -72,6 +74,7 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
     } 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,7 +140,6 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     
     func loadChecklist() {
         let path = dataFilePath()
-        let decoder = PropertyListDecoder()
         
         if let data = try? Data(contentsOf: path) {
             let decoder = PropertyListDecoder()

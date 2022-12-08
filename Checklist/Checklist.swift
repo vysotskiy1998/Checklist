@@ -8,6 +8,7 @@
 import UIKit
 
 class Checklist: NSObject {
+    
     var name: String
     var items = [ChecklistItem]()
     

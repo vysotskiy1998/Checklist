@@ -49,6 +49,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2A194D294A4876001B8F4E /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE26B8F9292BAE22007A7E32 /* Checklist.swift */,
+				E96216AE28E1C3D3002AD1B7 /* ChecklistItem.swift */,
+				CEF6E626294274050042D563 /* DataModel.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		CE2A194E294A48A3001B8F4E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE26B8F7292B9CBE007A7E32 /* AllListViewController.swift */,
+				E93FE11228D485A200648BA5 /* ChecklistViewController.swift */,
+				E921312528F09C5800FC0173 /* ItemDetailViewController.swift */,
+				CE2AF9612935EF7E00E0D751 /* ListDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CE2A194F294A48D6001B8F4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E93FE11728D485A600648BA5 /* Assets.xcassets */,
+				E93FE11928D485A600648BA5 /* LaunchScreen.storyboard */,
+				E93FE11428D485A200648BA5 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E93FE10228D485A200648BA5 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +99,11 @@
 		E93FE10D28D485A200648BA5 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A194D294A4876001B8F4E /* Data Models */,
+				CE2A194E294A48A3001B8F4E /* View Controllers */,
+				CE2A194F294A48D6001B8F4E /* Resources */,
 				E93FE10E28D485A200648BA5 /* AppDelegate.swift */,
 				E93FE11028D485A200648BA5 /* SceneDelegate.swift */,
-				CEF6E626294274050042D563 /* DataModel.swift */,
-				E93FE11228D485A200648BA5 /* ChecklistViewController.swift */,
-				E96216AE28E1C3D3002AD1B7 /* ChecklistItem.swift */,
-				E921312528F09C5800FC0173 /* ItemDetailViewController.swift */,
-				CE26B8F7292B9CBE007A7E32 /* AllListViewController.swift */,
-				CE26B8F9292BAE22007A7E32 /* Checklist.swift */,
-				CE2AF9612935EF7E00E0D751 /* ListDetailViewController.swift */,
-				E93FE11428D485A200648BA5 /* Main.storyboard */,
-				E93FE11728D485A600648BA5 /* Assets.xcassets */,
-				E93FE11928D485A600648BA5 /* LaunchScreen.storyboard */,
 				E93FE11C28D485A600648BA5 /* Info.plist */,
 			);
 			path = Checklist;

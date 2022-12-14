@@ -19,24 +19,6 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        
-//        var list = Checklist(name: "Birthday")
-//        lists.append(list)
-//
-//        list = Checklist(name: "Groceries")
-//        lists.append(list)
-//
-//        list = Checklist(name: "Cool Apps")
-//        lists.append(list)
-//
-//        list = Checklist(name: "To Do")
-//        lists.append(list)
-        
-//        for list in lists {
-//          let item = ChecklistItem()
-//          item.text = "Item for \(list.name)"
-//          list.items.append(item)
-//        }
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
@@ -91,7 +73,8 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let checklist = dataModel.lists[indexPath.row]
-        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        
+        dataModel.indexOfSelectedChecklist = indexPath.row
         
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
@@ -120,7 +103,7 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     //MARK: Navigation Controller Delegates
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === self {
-            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            dataModel.indexOfSelectedChecklist = -1
         }
     }
     
@@ -129,7 +112,7 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         
         navigationController?.delegate = self
         
-        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        let index = dataModel.indexOfSelectedChecklist
         if index != -1 {
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowCheklist", sender: checklist)

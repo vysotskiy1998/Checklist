@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllListViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
 
     let cellIdentifier = "ChecklistCell"
     
@@ -91,6 +91,8 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let checklist = dataModel.lists[indexPath.row]
+        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
     
@@ -113,5 +115,24 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         let controller = segue.destination as! ListDetailViewController
         controller.delegate = self
     }
+    }
+    
+    //MARK: Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController === self {
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        if index != -1 {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowCheklist", sender: checklist)
+        }
     }
 }

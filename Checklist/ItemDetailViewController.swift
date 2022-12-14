@@ -33,7 +33,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         } else {
             doneBarButton.isEnabled = false
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

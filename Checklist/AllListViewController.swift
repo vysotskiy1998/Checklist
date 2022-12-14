@@ -78,7 +78,7 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         let checklist = dataModel.lists[indexPath.row]
-        cell.textLabel!.text = checklist.name
+        cell.textLabel!.text? = checklist.name
         cell.accessoryType = .detailDisclosureButton
         
         return cell

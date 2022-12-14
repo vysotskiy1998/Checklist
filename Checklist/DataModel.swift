@@ -12,6 +12,7 @@ class DataModel {
     
     init() {
         loadChecklist()
+        registerDefaults()
     }
     
     func documentsDirectory() -> URL {
@@ -47,6 +48,8 @@ class DataModel {
         }
     }
     
-    
-    
+    func registerDefaults() {
+        let dictionary = ["ChecklistIndex": -1]
+        UserDefaults.standard.register(defaults: dictionary)
+    }
 }

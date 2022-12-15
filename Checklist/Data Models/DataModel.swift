@@ -8,6 +8,7 @@
 import Foundation
 
 class DataModel {
+    
     var indexOfSelectedChecklist: Int {
         get {
             return UserDefaults.standard.integer(forKey: "ChecklistIndex")
@@ -52,6 +53,7 @@ class DataModel {
             let decoder = PropertyListDecoder()
             do {
                 lists = try decoder.decode([Checklist].self, from: data)
+                sortChecklist()
             } catch {
                 print("Error decoding list array: \(error.localizedDescription)")
             }

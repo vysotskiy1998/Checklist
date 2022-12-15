@@ -16,18 +16,23 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dataModel.sortChecklist()
+        tableView.reloadData()
         navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
-        let newRowIndex = dataModel.lists.count
+//        let newRowIndex = dataModel.lists.count
+//        dataModel.lists.append(checklist)
+//
+//        let indexPath = IndexPath(row: newRowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+        
         dataModel.lists.append(checklist)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-        
+        dataModel.sortChecklist()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
         
     }
@@ -71,8 +76,11 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         }
         cell.accessoryType = .detailDisclosureButton
         
-        if let label = cell.detailTextLabel {
-            label.text = "\(checklist.countUncheckedItems()) Remaining"
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "(No items)"
+        } else {
+            cell.detailTextLabel!.text = count == 0 ? "All done" : "\(count) Remaining"
         }
         
         return cell

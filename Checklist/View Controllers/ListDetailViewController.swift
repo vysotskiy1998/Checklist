@@ -15,6 +15,8 @@ protocol ListDetailViewControllerDelegate: AnyObject {
 
 class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
+    @IBOutlet var iconImage: UIImageView!
+    
     @IBOutlet var textField: UITextField!
     
     @IBOutlet var doneBarButton: UIBarButtonItem!
@@ -71,7 +73,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK: Убирает выделение ячейки
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+        return indexPath.section == 1 ? indexPath : nil
     }
     
 }

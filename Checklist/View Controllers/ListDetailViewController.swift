@@ -13,7 +13,7 @@ protocol ListDetailViewControllerDelegate: AnyObject {
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist)
 }
 
-class ListDetailViewController: UITableViewController, UITextFieldDelegate {
+class ListDetailViewController: UITableViewController, UITextFieldDelegate, IconPickerViewControllerDelegate {
     
     @IBOutlet var iconImage: UIImageView!
     
@@ -25,6 +25,8 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     var checklistToEdit: Checklist?
     
+    var iconName = "Folder"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,9 +34,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
+            iconName = checklist.name
         } else {
             doneBarButton.isEnabled = false
         }
+        iconImage.image = UIImage(named: iconName)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,9 +53,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done(_ sender: Any) {
         if let checklist = checklistToEdit {
             checklist.name = textField.text!
+            checklist.iconName = iconName
             delegate?.listDetailViewController(self, didFinishEditing: checklist)
         } else {
             let checklist = Checklist(name: textField.text!)
+            checklist.iconName = iconName
             delegate?.listDetailViewController(self, didFinishAdding: checklist)
         }
     }
@@ -76,4 +82,18 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         return indexPath.section == 1 ? indexPath : nil
     }
     
+    // MARK: - Icon Picker View Controller Delegate
+    func iconPicker(_ picker: IconPickerViewController,didPick iconName: String){
+        self.iconName = iconName
+        iconImage.image = UIImage(named: iconName)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "PickIcon" {
+            let controller = segue.destination as! IconPickerViewController
+            controller.delegate = self
+        }
+    }
 }

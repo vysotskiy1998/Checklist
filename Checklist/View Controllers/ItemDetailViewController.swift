@@ -15,6 +15,10 @@ protocol ItemDetailViewControllerDelegate: AnyObject {
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBOutlet weak var textField: UITextField!
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
@@ -30,6 +34,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+            shouldRemindSwitch.isOn = item.shouldRemind 
+            datePicker.date = item.dueDate
         } else {
             doneBarButton.isEnabled = false
         }
@@ -52,10 +58,14 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done(_ sender: Any) {
         if let item = itemToEdit {
             item.text = textField.text!
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = datePicker.date
             delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
             let item = ChecklistItem()
             item.text = textField.text!
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = datePicker.date
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
